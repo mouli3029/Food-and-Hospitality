@@ -1,20 +1,28 @@
 {% extends "user/index.html" %}
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 {% block start %}
 
- <div class="content-section col-md-8 col-md-offset-2">
-  <center>
-  <form method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
+ <div class="main col-md-8 col-md-offset-2">
+    
+  <form method="POST" class="form-content">
+    <h3 class="form-header">Login</h3>
     {% csrf_token %}
-    <fieldset class="form-group">
-      {{ form|crispy}}
-    </fieldset>
-   <center>
-    <button style="background: black; font-size: 2rem; padding:1%;" class="btn btn-outline-info" type="submit"><span class="glyphicon glyphicon-log-in"></span> &nbsp; login</button>
-  </center>
-  <br/>
-  <sub style="text-align: left;"><a href="{% url 'register' %}" style="text-decoration: none; color: blue; padding:2%; cursor:pointer; margin-right:2%;">don't have account,sign up</a></sub>
+    <div class="form-group">
+      <div class="form-group-content">
+       {% for field in form %}
+       {{field.errors}}
+       
+       {{field.label_tag}}
+       
+       {% render_field field class="input" %}
+     {% endfor %}
+      </div>
+    </div>
+    <div class="last">
+      <p> Don't Have a Account ?<a href="{% url "register" %}" style="text-decoration: none; color: #E83A59; padding:3%; cursor:pointer;">Register</a></p>
+      <button class="button" type="submit"><span class="glyphicon glyphicon-check"></span> &nbsp; Continue</button>
+    </div>
   </form>
-</center>
  </div>
 {% endblock start %}
