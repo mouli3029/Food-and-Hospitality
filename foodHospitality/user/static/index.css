@@ -1,0 +1,9 @@
+.card-btn{
+    background-color: #E83A59;
+    color: white;
+    width: 103%;
+    padding : 10px 5px;
+    border-radius: 20px;
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+}
