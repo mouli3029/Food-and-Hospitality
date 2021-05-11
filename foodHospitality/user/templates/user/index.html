@@ -11,7 +11,7 @@
   <meta name="language" content="English">
   <meta name="author" content="vinayak sharma">
 
-  <title></title>
+  <title> Home </title>
 
 
   <!-- bootstrap file -->
@@ -48,46 +48,36 @@
 
 </head>
 
-<body class="container-fluid">
-
-
-  <header class="row">
-
+<body class="home">
     <!-- navbar-->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" class="styleheader" href="{% url "index" %}">project</a>
-        </div>
-        <div class="collapse navbar-collapse" id="mainNavBar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url "index" %}">Home</a></li>
-
+    <div class="nav">
+      <ul class="nav-item-left">
+          <li>
+            <a class="nav-link" href="/">
+              <img class="img" src="{% static 'logo.png' %}" width="70px" height="40px"/>
+            </a>
+          </li>
+          <li><a class="nav-link" href="/">Home</a></li>
+          <li><a class="nav-link " href="">Restaurants</a></li>
+          <li><a class="nav-link" href="">Hotels</a></li>
+      </ul>
+      <ul class="nav-item-right">
             {% if user.is_authenticated %}
-            <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+            <li><a class="nav-link" href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
             {% else %}
-            <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
-            <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+            <li><a class="nav-link" href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+            &nbsp;&nbsp;&nbsp;
+            <li><a class="nav-link" href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
             {% endif %}
-
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+      </ul>
+  </div>
   <br/>
   <br>
   <br>
   <div class="row">
     {% block start %}
     {% if user.is_authenticated %}
-    <center><h1>welcome, here</h1></center>
+    <center><h1>welcome, user</h1></center>
     {% else %}
     <center><h1>log in, plz . . .</h1></center>
     {% endif %}
