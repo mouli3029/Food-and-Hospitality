@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 .card-btn{
     background-color: #E83A59;
     color: white;
@@ -6,4 +7,59 @@
     border-radius: 20px;
     font-size: medium;
     font-family: 'Montserrat', sans-serif;
+}
+h3{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800px;
+    margin-bottom: 20px;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.form-content{
+    display: flex !important;
+    flex-direction: column;
+}
+
+.form-group-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form-content{
+    width: 550px;
+    height: auto;
+    margin-top: 50px;
+    border: 1px solid #eeeeee;
+    box-shadow: -10px 6px 5px 0px rgba(176,164,176,1) !important;
+    transition: all .3s ease-in-out !important;
+    padding: 10px 40px;
+    background-color: #63E7BF;
+    border-radius: 24px;
+}
+.form-header{
+    color: #E83A59;
+}
+.input {
+    width: 450px;
+    padding : 8px 5px;
+    margin-bottom: 10px;
+    outline-style: none;
+    border: none;
+}
+.button{
+    outline-style: none;
+    background-color: #E83A59;
+    color: white;
+    width: 30%;
+    padding : 10px 5px;
+    border-radius: 20px;
+    font-size: medium;
+    font-family: 'Poppins', sans-serif;
+}
+.last{
+    display: flex;
+    justify-content: space-between;
 }
