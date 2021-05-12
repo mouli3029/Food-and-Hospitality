@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 .nav{
     display: flex;
     padding: 10px;
@@ -33,4 +34,69 @@
 }
 .nav-link:hover{
     color: #E83A59;
+}
+.contain {
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;
+    margin-top: 5px 0px 0px 0px;
+}
+/* ViewHotels css */
+.card {
+    box-shadow: -10px 6px 5px 0px rgba(176,164,176,1) !important;
+    transition: all .3s ease-in-out !important;
+    width : 30rem;
+  }
+.card:hover {
+    box-shadow: -3px 18px 20px 0px rgba(99,89,99,1) !important;
+}
+.button{
+    color: #ffffff !important;
+    background-color: #E83A59 !important;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.button > a {
+    text-decoration: none;
+    color: white;
+}
+.button > a:hover{
+    color: white;
+}
+
+.card-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 4;
+    flex-wrap: wrap;
+    flex: 1 0 auto;
+    font-family: 'Poppins', sans-serif;   
+    margin-top: 20px; 
+}
+.card-container > div{
+    margin: 10px;
+}
+.card-img-top{
+    width: 29rem;
+    padding: 0.7rem;
+    text-align: center;
+    height: 20rem;
+}
+
+.card-body{
+    padding: 10px;
+}
+.card-title{
+    font-weight: 900;
+    font-size: 1.8rem;
+}
+.card-rating{
+    margin-left: 10px;
+}
+
+/* hotel.html */
+.image-hotel{
+    width: 50px;
 }

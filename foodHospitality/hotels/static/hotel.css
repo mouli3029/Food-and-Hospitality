@@ -95,3 +95,46 @@
 .card-rating{
     margin-left: 10px;
 }
+
+/* hotel.html */
+.image-hotel{
+    width: 100%;
+    max-height: 500px;
+}
+.hotel-content{
+    display: flex;
+    padding: 10px 20px 10px;
+}
+.hotel-content-left{
+    flex: 0.6;
+}
+.hotel-content-left_header{
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+}
+.hotel-content-left_desc{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 450;
+    letter-spacing: 0rem;
+    margin-left: 5px;
+}
+.hotel-content-right{
+    padding: 5px;
+    margin-top: 20px;
+    flex: 0.4;
+    margin-left: 20px;
+    right: 5%;
+}
+.hotel-content-right_ava{
+    color: #2B8D12;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 0.2rem;
+}
+.hotel-content-right_loc,
+.hotel-content-right_pri
+{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 450;
+}

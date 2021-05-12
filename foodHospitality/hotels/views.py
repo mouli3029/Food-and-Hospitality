@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Hotel
 # Create your views here.
@@ -11,7 +11,10 @@ def AllHotels(request):
     })
 
 def FetchHotel(request,id):
-    return HttpResponse('<p> Fetch single hotel {{id}} </p>')
+    hotel = get_object_or_404(Hotel,pk=id)
+    return render(request,'hotels/hotel.html',{
+        'hotel' : hotel
+    })
   
 
 
