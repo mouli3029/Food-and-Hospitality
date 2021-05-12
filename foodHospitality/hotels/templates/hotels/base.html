@@ -11,7 +11,7 @@
   <meta name="language" content="English">
   <meta name="author" content="vinayak sharma">
 
-  <title> Home </title>
+  <title> Hotels </title>
 
 
   <!-- bootstrap file -->
@@ -27,25 +27,7 @@
 
 
   <!-- main css -->
-  <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
-
-
-  <!-- message here -->
-
-  {% if messages %}
-  {% for message in messages %}
-
-  <script>
-    alert("{{ message }}");
-  </script>
-
-  {% endfor %}
-  {% endif %}
-
-  <!--_______________________________________________-->
-
-
-
+  <link rel="stylesheet" type="text/css" href="{% static 'hotel.css' %}" />
 </head>
 
 <body class="home">
@@ -58,7 +40,7 @@
             </a>
           </li>
           <li><a class="nav-link" href="/">Home</a></li>
-          <li><a class="nav-link " href="">Restaurants</a></li>
+          <li><a class="nav-link " href="#">Restaurants</a></li>
           <li><a class="nav-link" href="{% url 'hotels' %}">Hotels</a></li>
       </ul>
       <ul class="nav-item-right">
@@ -74,7 +56,7 @@
   <br/>
   <br>
   <br>
-  <div>
+  <div class="contain">
     {% block start %}
         
     {% endblock %}
