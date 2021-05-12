@@ -29,6 +29,9 @@ urlpatterns = [
     path('login/', user_view.Login, name ='login'),
     path('logout/', auth.LogoutView.as_view(template_name ='user/index.html'), name ='logout'),
     path('register/', user_view.register, name ='register'),
+
+    # hotel
+    path('hotel/',include('hotels.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)
