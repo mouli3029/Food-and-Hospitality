@@ -21,4 +21,10 @@ def FoodView(request,cid):
 
 
 def FoodItem(request,cid,fid):
-    return HttpResponse('<p>Food Item</p>')
+
+    category = get_object_or_404(Category,pk=cid)
+    food = Food.objects.filter(category=category)
+    food_item = food.filter(id=fid)
+    return render(request,'food/food_item.html',{
+        'food_item' : food_item[0]
+    })
