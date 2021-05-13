@@ -1,0 +1,24 @@
+{% extends 'food/base.html' %}
+{% load widget_tweaks %}
+{% block start %}
+<div id="all" class="card-container">
+{% for item in food %}
+  <div class="card">
+          <img class="card-img-top" src="{{ item.image.url }}" alt="{{ item.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description|truncatechars:200}}</p>
+            <p class="card-rating">{{ item.rating}}★</p>
+            <p class="card-category">{{ item.category }}</p>
+            <button class="button">
+              <a href="{% url 'fooditem' item.category.id item.id %}"> Order Now - ₹{{item.price}} </a>
+            </button>
+          </div>
+      </div>
+{% endfor %}
+</div>
+{% endblock start %}
+
+
+
+

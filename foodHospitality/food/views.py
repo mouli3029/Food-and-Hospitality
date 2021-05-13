@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-from .models import Category
+from .models import Category,Food
 # Create your views here.
 
 def Menu(request):
@@ -9,8 +9,15 @@ def Menu(request):
         'menu' : menu
     })
 
-def Food(request,cid):
-    return HttpResponse('<p>Food</p>')
+def FoodView(request,cid):
+    print(cid)
+    category = get_object_or_404(Category,pk=cid)
+    food = Food.objects.filter(category=category)
+    print(food)
+
+    return render(request,'food/food.html',{
+        'food' : food
+    })
 
 
 def FoodItem(request,cid,fid):

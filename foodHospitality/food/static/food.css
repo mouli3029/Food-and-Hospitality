@@ -94,3 +94,16 @@
     font-weight: 900;
     font-size: 1.8rem;
 }
+/* Food.html */
+.card-title{
+    font-weight: 900;
+    font-size: 1.8rem;
+}
+.card-rating{
+    margin-left: 10px;
+}
+
+/* hotel.html */
+.image-hotel{
+    width: 50px;
+}
