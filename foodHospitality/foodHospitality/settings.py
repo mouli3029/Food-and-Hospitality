@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'hotels',
-    'food'
+    'food',
+    'cart'
 ]
 
 MIDDLEWARE = [

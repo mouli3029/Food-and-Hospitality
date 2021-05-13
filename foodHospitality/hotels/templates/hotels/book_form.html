@@ -1,0 +1,19 @@
+{% extends 'hotels/base.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block start %}
+
+<form action="{% url 'book' id %}" method="POST">
+    {% csrf_token %}
+    <h1>{{ mess }}</h1>
+    <div class="form-group">
+      {% for field in form %}
+        {{field.errors}}
+        {{field.label_tag}}
+        {% render_field field class="form-control" %}
+      {% endfor %}
+   </div>
+   <input type="submit" class="button" value="Book"/>
+</form>
+
+{% endblock start %}

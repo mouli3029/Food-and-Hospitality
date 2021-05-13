@@ -1,4 +1,7 @@
 from django.db import models  
+from django.contrib.auth.models import User
+from datetime import date
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Hotel(models.Model):
     name = models.CharField(max_length=50)
@@ -10,5 +13,11 @@ class Hotel(models.Model):
 
     def __str__(self):
         return self.name   
-# class Cart(models.Model):
-#     product = models.ForeignKey(Prod)
+
+class Booking(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    hotel = models.ForeignKey('Hotel',on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(100)])
+
+    booked_from = models.DateField(default=date.today())
+    booked_to = models.DateField()
