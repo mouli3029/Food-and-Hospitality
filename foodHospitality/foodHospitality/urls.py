@@ -31,7 +31,10 @@ urlpatterns = [
     path('register/', user_view.register, name ='register'),
 
     # hotel
-    path('hotel/',include('hotels.urls'))
+    path('hotel/',include('hotels.urls')),
+
+    # food
+    path('food/',include('food.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)

@@ -1,0 +1,16 @@
+{% extends 'food/base.html' %}
+{% block start %}
+<div id="all" class="card-container">
+{% for item in menu %}
+<div class="card">
+    <img class="card-img-top" src="{{ item.image.url }}" alt="{{ item.cname }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.cname }}</h5>
+      <button class="button">
+        <a href="{% url 'food' item.id %}">Order</a>
+      </button>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock start %}
