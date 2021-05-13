@@ -45,7 +45,6 @@ def BookRoom(request,id):
         return render(request,'hotels/book_form.html',{
             "mess":mess,
             'filled_form':filled_form,
-            'book_detail':book_detail,
             'id':id,
         })
     else:
@@ -61,9 +60,17 @@ def BookRoom(request,id):
     return HttpResponse('<p>Booking Room</p>')
 
 def YourBookings(request):
-    bookings = Booking.objects.all()
-    print(bookings)
-    return HttpResponse('<p> Booking Status </p>')
+    user = get_object_or_404(User,pk=7)
+    bookings = Booking.objects.filter(user=user).values(
+        'quantity',
+        'booked_from',
+        'booked_to',
+        'hotel__name', # Similar to booking.hotel.value
+        'hotel__price'
+    )
+    return render(request,'hotels/allbookings.html',{
+        'bookings' : bookings
+    })
     
 
 def BookStatus(request,id):

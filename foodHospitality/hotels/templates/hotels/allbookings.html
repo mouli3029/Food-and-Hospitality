@@ -1,0 +1,20 @@
+{% extends 'hotels/base.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block start %}
+<div id="all" class="card-container">
+    <h3 style="color: #E83A59;">Your Hotel Bookings</h3>
+    {% for order in bookings.all %}
+      <div class="card" style="width: 80% !important;">
+              <div class="card-body">
+                <h5 class="card-title">{{order.hotel__name}}</h5>
+                <p class="card-text1">Quantity : {{order.quantity}}</p>
+                <p class="card-text1">Price: {{ order.hotel__price }} </p>
+                <p class="card-text1">Status :<span style="background-color: #2B8D12; color: white;"> Successfull</span></p>
+                <p class="card-text1">From : {{ order.booked_from|date:"D d M Y" }}</p>
+                <p class="card-text1">To : {{ order.booked_to |date:"D d M Y" }} </p>
+              </div>
+          </div>
+    {% endfor %}
+</div>
+{% endblock start %}
