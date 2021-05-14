@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'hotels',
     'food',
-    'cart'
 ]
 
 MIDDLEWARE = [

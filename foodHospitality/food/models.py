@@ -26,5 +26,8 @@ class Category(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     food = models.ForeignKey('Food',on_delete=models.CASCADE)
+    category = models.ForeignKey('Category',on_delete=models.CASCADE)
+
+
     quantity = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(100)])
-    Ordered_on = models.DateField(default=date.today()) 
+    ordered_on = models.DateField(default=date.today()) 
