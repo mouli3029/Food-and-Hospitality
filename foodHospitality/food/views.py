@@ -28,7 +28,8 @@ def FoodItem(request,cid,fid):
     food = Food.objects.filter(category=category)
     food_item = food.filter(id=fid)
     return render(request,'food/food_item.html',{
-        'food_item' : food_item[0]
+        'food_item' : food_item[0],
+        'cid':cid,
     })
 
 def FoodOrder(request,cid,fid):
@@ -45,7 +46,8 @@ def FoodOrder(request,cid,fid):
            quantity = filled_form.cleaned_data['quantity']
            ordered_on = filled_form.cleaned_data['ordered_on']
 
-           cart =  Cart(user=user,food=food,category=category,quantity=quantity,ordered_on=ordered_on)
+           cart =  Cart(user=user,food=food,
+                       quantity=quantity,ordered_on=ordered_on)
            cart.save()
            mess = "Thanks for ordering!Your order is successfull. Futher queries contact admin@gmail.com"
         else :
@@ -61,7 +63,6 @@ def FoodOrder(request,cid,fid):
         cart = OrderForm()
         cart.fields['username'].initial = user.username
         cart.fields['email'].initial = user.email
-        cart.fields['phone_no'].initial = user.phone_no
         cart.fields['name'].initial = food.name
         cart.fields['category'].initial = category.cname
 

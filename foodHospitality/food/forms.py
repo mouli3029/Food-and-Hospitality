@@ -10,7 +10,7 @@ class OrderForm(forms.ModelForm):
     
     class Meta:
         model = Cart
-        fields = ['username','email','phone_no','name','category','quantity','orderedOn']
+        fields = ['username','email','phone_no','name','category','quantity','ordered_on']
 
 
 
