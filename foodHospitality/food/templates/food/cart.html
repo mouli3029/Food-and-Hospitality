@@ -1,0 +1,19 @@
+{% extends 'food/base.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block start %}
+<h3 style="color: #E83A59;font-family: 'Poppins',sans-serif;text-align: center;margin-top: 40px;">Your Orders</h3>
+<div id="all" class="card-container">
+    {% for order in orders.all %}
+      <div class="card" style="width: 80% !important;">
+              <div class="card-body">
+                <h5 class="card-title">{{order.food__name}}</h5>
+                <p class="card-text1">Quantity : {{order.quantity}}</p>
+                <p class="card-text1">Price: {{ order.food__price }} </p>
+                <p class="card-text1">Status :<span style="background-color: #2B8D12; color: white;"> Successfull</span></p>
+                <p class="card-text1">From : {{ order.ordered_on|date:"D d M Y" }}</p>
+              </div>
+          </div>
+    {% endfor %}
+</div>
+{% endblock start %}

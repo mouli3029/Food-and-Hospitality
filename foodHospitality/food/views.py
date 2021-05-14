@@ -73,4 +73,16 @@ def FoodOrder(request,cid,fid):
         })
 
 
-        
+def AllOrders(request):
+    user_id = request.user.id
+    user = get_object_or_404(User,pk=user_id)
+    orders = Cart.objects.filter(user=user).values(
+        'quantity',
+        'ordered_on',
+        'food__name', 
+        'food__price',
+        'food__category__cname'
+    )
+    return render(request,'food/cart.html',{
+        'orders':orders
+    })

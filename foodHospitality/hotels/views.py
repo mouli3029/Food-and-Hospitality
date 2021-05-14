@@ -60,7 +60,8 @@ def BookRoom(request,id):
     return HttpResponse('<p>Booking Room</p>')
 
 def YourBookings(request):
-    user = get_object_or_404(User,pk=7)
+    user_id = request.user.id
+    user = get_object_or_404(User,pk=user_id)
     bookings = Booking.objects.filter(user=user).values(
         'quantity',
         'booked_from',
