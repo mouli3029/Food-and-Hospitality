@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block start %}
-<h3 style="color: #E83A59;font-family: 'Poppins',sans-serif;text-align: center;margin-top: 40px;">Your Orders</h3>
+<h3 style="color: #E83A59;font-family: 'Poppins',sans-serif;text-align: center;margin-top: 40px;text-decoration: underline;">Your Orders</h3>
 <div id="all" class="card-container">
     {% for order in orders.all %}
       <div class="card" style="width: 80% !important;">

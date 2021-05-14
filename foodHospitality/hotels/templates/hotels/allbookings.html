@@ -2,9 +2,9 @@
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block start %}
+<h3 style="color: #E83A59;font-family: 'Poppins',sans-serif;text-align: center;margin-top: 40px; text-decoration: underline;">Your Hotel Bookings</h3>
 <div id="all" class="card-container">
-    <h3 style="color: #E83A59;">Your Hotel Bookings</h3>
-    {% for order in bookings.all %}
+   {% for order in bookings.all %}
       <div class="card" style="width: 80% !important;">
               <div class="card-body">
                 <h5 class="card-title">{{order.hotel__name}}</h5>
