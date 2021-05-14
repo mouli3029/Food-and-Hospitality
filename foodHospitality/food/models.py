@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
+from datetime import date
 
 # Create your models here.
 class Food(models.Model):
@@ -19,3 +22,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.cname
+
+class Cart(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    food = models.ForeignKey('Food',on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(100)])
+    Ordered_on = models.DateField(default=date.today()) 
