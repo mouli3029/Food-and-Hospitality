@@ -15,7 +15,7 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    return render(request,'user/index.html',{'title':'index'})
+    return render(request,'user/home.html',{'title':'index'})
 
 def register(request):
     if request.method == "POST":

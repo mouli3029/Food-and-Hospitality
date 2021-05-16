@@ -1,0 +1,50 @@
+{% extends "user/index.html" %}
+{% block start %}
+<div style="background: url('/static/home-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin-top: -10px;
+            width: 100%;
+            height: 93vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            ">
+            <div style="">
+                <div>
+                    <h1 style="
+                          font-family: 'Poppins',sans-serif;
+                          font-weight: 800px;
+                          letter-spacing: 0.2rem;
+                          color: #E83A59;
+                ">
+                    Hotels And More !
+                </h1>
+                </div>
+                <div style="display: flex;
+                transition: all 0.3s linear;">
+                    <button href="{% url 'hotels' %}" class="but" style="
+                              font-family: 'Poppins',sans-serif;
+                              color: white;
+                              border-radius: 3rem;
+                              background-color: #E83A59;
+                              padding: 1rem 2rem;
+                              border: none;
+                              margin-right:auto;
+                              margin-left: auto;
+                    "> <a style="text-decoration: none; color: white;" href="{% url 'hotels' %}" class=""> View Hotels </a></button>
+                    <button class="but" style="
+                              font-family: 'Poppins',sans-serif;
+                              color: white;
+                              border-radius: 3rem;
+                              background-color: #E83A59;
+                              padding: 1rem 2rem;
+                              border: none;
+                              margin-right:auto;
+                    "> <a style="text-decoration: none; color: white;" href="{% url 'menu' %}" class=""> View Menu </a></button>
+                </div>
+            </div>
+</div>
+
+
+{% endblock start%}
