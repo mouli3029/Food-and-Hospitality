@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Category,Food,Cart
 from django.contrib.auth.models import User
 from .forms import OrderForm
+
  # Create your views here.
 
 def Menu(request):
