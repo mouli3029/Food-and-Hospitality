@@ -29,7 +29,7 @@ def register(request):
             html_email = get_template('user/email.html')
             ctx = {'username':username}
             subject = 'Welcome'
-            from_email = 'moulichowdary82@gmail.com'
+            from_email = 'tasterideadmi@gmail.com'
             to = email
 
             html_content = html_email.render(ctx)
