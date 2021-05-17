@@ -1,6 +1,24 @@
 {% extends 'food/base.html' %}
 {% load widget_tweaks %}
 {% block start %}
+<div style="margin: 20px;
+            display: block;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+" class="search">
+  <form>
+    <input 
+          style="width: 100%;
+                 padding: 1rem 1rem;
+                 border-radius: 15px;
+                 border: 1px solid #ddddddb6;
+                 box-shadow :-4px 2px 3px 0px rgba(176,176,176,1) !important;
+                 outline-style: none;
+                 "
+     type="text" placeholder="Search here"/>
+  </form>
+</div>
 <div id="all" class="card-container">
 {% for item in food %}
   <div class="card">
