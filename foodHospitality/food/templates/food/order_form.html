@@ -2,13 +2,26 @@
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block start %}
+{% if mess %}
+<div class = "mess" style="margin-top: 50px;">
+  <h3 style="color: #E83A59; text-align: center; font-weight: 900;font-family: 'Poppins',sans-serif;">
+      {{ mess.title }}
+  </h3>
+  <h3 style="text-align: center; font-weight: 700;font-family: 'Poppins',sans-serif;">
+    Your Order {{mess.ordername}} will be delivered soon.
+</h3>
+<h3 style="color: green; text-align: center; font-weight: 700;font-family: 'Poppins',sans-serif;">
+  Ordered on : {{mess.ordered_on|date:"D d M Y"}}
+
+</h3>
+</div>
+{% endif %}
 <div class="book-form">
 <form action="{% url 'foodorder' cid fid %}" method="POST">
   {% csrf_token %}
   <br/>
   <br/>
   <br/>
-  <p class="text-mess">{{ mess }}</p>
   <div class="form-group">
     {% for field in form %}
       {{field.errors}}

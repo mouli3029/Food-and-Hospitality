@@ -46,13 +46,21 @@ def FoodOrder(request,cid,fid):
         if filled_form.is_valid():
            quantity = filled_form.cleaned_data['quantity']
            ordered_on = filled_form.cleaned_data['ordered_on']
-
-           cart =  Cart(user=user,food=food,
+           address = filled_form.cleaned_data['address']
+           cart =  Cart(user=user,food=food,address=address,
                        quantity=quantity,ordered_on=ordered_on)
            cart.save()
-           mess = "Thanks for ordering!Your order is successfull. Futher queries contact admin@gmail.com"
+           mess = {
+               "title" : "Thanks for ordering!Your order is successfull. Futher queries contact tasterideadmi6@gmail.com",
+               "ordered_on":ordered_on,
+               "ordername" : food.name,
+           }
         else :
-            mess = "Sorry something went wrong!Our team is working on it.Please try in few minutes"
+            mess = {
+               "title" : "Sorry something went wrong!Our team is working on it.Please try in few minutes",
+               "ordered_on":"",
+               "ordername" : "",
+              }
         return render(request,'food/order_form.html',{
             'mess':mess,
             'filled_form':filled_form,
@@ -83,7 +91,8 @@ def AllOrders(request):
         'food__name', 
         'food__price',
         'food__category__cname',
-        'food__image'
+        'food__image',
+        'address'
     )
     return render(request,'food/cart.html',{
         'orders':orders

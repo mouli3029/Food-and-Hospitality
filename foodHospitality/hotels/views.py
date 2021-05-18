@@ -37,10 +37,20 @@ def BookRoom(request,id):
             book_detail = Booking(user=user,hotel=hotel,quantity=quantity,booked_from=booked_from,booked_to=booked_to)
             book_detail.save()
 
-            mess = "Thanks for booking !! Your booking is successfull !"
+            mess = {
+                "title": "Thanks for booking.Your booking was successfull !",
+                "ordername" : hotel.name,
+                "booked_from":booked_from,
+                "booked_to":booked_to
+            }
         else:
             book_detail_id = None
-            mess = "Sorry, for the inconvinence caused! Please try again"
+            mess = {
+                "title": "Sorry, for the inconvinence caused! Please try again",
+                "ordername" : "",
+                "booked_from":"",
+                "booked_to":""
+            }
         
         return render(request,'hotels/book_form.html',{
             "mess":mess,
