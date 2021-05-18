@@ -3,7 +3,6 @@
 {% load crispy_forms_tags %}
 {% block start %}
 <div class="book-form">
-  
 <form action="{% url 'foodorder' cid fid %}" method="POST">
   {% csrf_token %}
   <br/>

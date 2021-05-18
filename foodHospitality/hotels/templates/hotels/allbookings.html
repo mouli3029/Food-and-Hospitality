@@ -5,15 +5,34 @@
 <h3 style="color: #E83A59;font-family: 'Poppins',sans-serif;text-align: center;margin-top: 40px; text-decoration: underline;">Your Hotel Bookings</h3>
 <div id="all" class="card-container">
    {% for order in bookings.all %}
-      <div class="card" style="width: 80% !important;">
-              <div class="card-body">
-                <h5 class="card-title">{{order.hotel__name}}</h5>
-                <p class="card-text1">Quantity : {{order.quantity}}</p>
-                <p class="card-text1">Price: {{ order.hotel__price }} </p>
-                <p class="card-text1">Status :<span style="background-color: #2B8D12; color: white;"> Successfull</span></p>
-                <p class="card-text1">From : {{ order.booked_from|date:"D d M Y" }}</p>
-                <p class="card-text1">To : {{ order.booked_to |date:"D d M Y" }} </p>
-              </div>
+      <div class="card" style="width: 80% !important; display: flex;margin: 50px;">
+        <div class="card-body-left">
+          <img class="card-img-top" src="../media/{{order.hotel__image}}" alt="{{order.hotel__name}}"/>
+        </div>
+          <div class="card-body">
+            <h5 class="card-title">{{order.hotel__name}}</h5>
+            <p class="card-text1">Quantity : {{order.quantity}}</p>
+            <p class="card-text1">Price: {{ order.hotel__price }} </p>
+            <p class="card-text1">Status :<span style="background-color: #2B8D12; color: white;"> Successfull</span></p>
+            <p class="card-text1">From : {{ order.booked_from|date:"D d M Y" }}</p>
+            <p class="card-text1">To : {{ order.booked_to |date:"D d M Y" }} </p>
+          </div>
+          <div style="    margin-left: auto;
+                          margin-top: auto;
+                          padding: 20px;">
+            <button style="background-color: green;
+                           color: white;
+                           padding: 5px 10px;
+                           border-radius: 5px;
+                           border: none;">
+              <a href="#" style="text-decoration: none; color: white;">Update</a>
+            </button>
+            <button class="button">
+              <a href="#">
+                Delete
+              </a>
+            </button>
+          </div>
           </div>
     {% endfor %}
 </div>

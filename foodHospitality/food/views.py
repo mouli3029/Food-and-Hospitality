@@ -82,7 +82,8 @@ def AllOrders(request):
         'ordered_on',
         'food__name', 
         'food__price',
-        'food__category__cname'
+        'food__category__cname',
+        'food__image'
     )
     return render(request,'food/cart.html',{
         'orders':orders

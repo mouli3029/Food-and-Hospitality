@@ -1,144 +1,143 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-.nav{
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    background-color: #FFDFDF;
-    position: fixed;
-    right: 0;
-    left: 0ch;
-    z-index: 1;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+.nav {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  background-color: #ffdfdf;
+  position: fixed;
+  right: 0;
+  left: 0ch;
+  z-index: 1;
 }
-.img{
-    margin-right: 10px;
-    background-color: #FFeEDF;
+.img {
+  margin-right: 10px;
+  background-color: #ffeedf;
 }
-.nav-item-left{
-    display: flex;
-    list-style-type: none;
-    align-items: center;  
-    margin-right: auto; 
+.nav-item-left {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  margin-right: auto;
 }
-.nav-item-right{
-    display: flex;
-    list-style-type: none; 
-    margin-right: 20px;
+.nav-item-right {
+  display: flex;
+  list-style-type: none;
+  margin-right: 20px;
 }
 .nav-link {
-    text-decoration: none;
-    padding: 5px;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 500;
+  text-decoration: none;
+  padding: 5px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
-.nav-link:hover{
-    color: #E83A59;
+.nav-link:hover {
+  color: #e83a59;
 }
 .contain {
-    padding: 0;
-    background-color: #ffffff;
-    position: relative;
-    margin-top: 20px 0px 0px 0px;
+  padding: 0;
+  background-color: #ffffff;
+  position: relative;
+  margin-top: 20px 0px 0px 0px;
 }
 /* ViewHotels css */
 .card {
-    box-shadow: -10px 6px 5px 0px rgba(176,164,176,1) !important;
-    transition: all .3s ease-in-out !important;
-    width : 30rem;
-  }
-.card:hover {
-    box-shadow: -3px 18px 20px 0px rgba(99,89,99,1) !important;
+  box-shadow: -10px 6px 5px 0px rgba(176, 164, 176, 1) !important;
+  transition: all 0.3s ease-in-out !important;
+  width: 30rem;
 }
-.button{
-    color: #ffffff !important;
-    background-color: #E83A59 !important;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
+.card:hover {
+  box-shadow: -3px 18px 20px 0px rgba(99, 89, 99, 1) !important;
+}
+.button {
+  color: #ffffff !important;
+  background-color: #e83a59 !important;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
 }
 
 .button > a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
-.button > a:hover{
-    color: white;
-}
-
-.card-container{
-    display: flex;
-    justify-content: space-evenly;
-    flex-grow: 4;
-    flex-wrap: wrap;
-    flex: 1 0 auto;
-    font-family: 'Poppins', sans-serif;   
-    margin-top: 20px; 
-}
-.card-container > div{
-    margin: 10px;
-}
-.card-img-top{
-    width: 29rem;
-    padding: 0.7rem;
-    text-align: center;
-    height: 20rem;
+.button > a:hover {
+  color: white;
 }
 
-.card-body{
-    padding: 10px;
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-grow: 4;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
 }
-.card-title{
-    font-weight: 900;
-    font-size: 1.8rem;
+.card-container > div {
+  margin: 10px;
 }
-.card-rating{
-    margin-left: 10px;
+.card-img-top {
+  width: 29rem;
+  padding: 0.7rem;
+  text-align: center;
+  height: 20rem;
+}
+
+.card-body {
+  padding: 10px;
+}
+.card-title {
+  font-weight: 900;
+  font-size: 1.8rem;
+}
+.card-rating {
+  margin-left: 10px;
 }
 
 /* hotel.html */
-.image-hotel{
-    width: 100%;
-    max-height: 500px;
+.image-hotel {
+  width: 100%;
+  max-height: 500px;
 }
-.hotel-content{
-    display: flex;
-    padding: 10px 20px 10px;
+.hotel-content {
+  display: flex;
+  padding: 10px 20px 10px;
 }
-.hotel-content-left{
-    flex: 0.6;
+.hotel-content-left {
+  flex: 0.6;
 }
-.hotel-content-left_header{
-    font-family: 'Poppins', sans-serif; 
-    font-weight: 900;
-    letter-spacing: 0.1rem;
+.hotel-content-left_header {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
 }
-.hotel-content-left_desc{
-    font-family: 'Poppins',sans-serif;
-    font-weight: 450;
-    letter-spacing: 0rem;
-    margin-left: 5px;
+.hotel-content-left_desc {
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
+  letter-spacing: 0rem;
+  margin-left: 5px;
 }
-.hotel-content-right{
-    padding: 5px;
-    margin-top: 20px;
-    flex: 0.4;
-    margin-left: 20px;
-    right: 5%;
+.hotel-content-right {
+  padding: 5px;
+  margin-top: 20px;
+  flex: 0.4;
+  margin-left: 20px;
+  right: 5%;
 }
-.hotel-content-right_ava{
-    color: #2B8D12;
-    font-weight: 800;
-    font-style: italic;
-    letter-spacing: 0.2rem;
+.hotel-content-right_ava {
+  color: #2b8d12;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.2rem;
 }
 .hotel-content-right_loc,
-.hotel-content-right_pri
-{
-    font-family: 'Poppins',sans-serif;
-    font-weight: 450;
+.hotel-content-right_pri {
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
 }
 /* book_form.html */
 .text-mess {
-    font-family: 'Poppins',sans-serif;
+  font-family: "Poppins", sans-serif;
 }
