@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Hotel,Booking
 from .forms import BookingForm
@@ -144,6 +144,12 @@ def UpdateBooking(request,id):
         'form' : form,
         "id":id
     })
+
+
+def DeleteBooking(request,id):
+    status = Booking.objects.filter(pk=id).delete()
+    print(status)
+    return redirect('your')
     
 
 def BookStatus(request,id):
