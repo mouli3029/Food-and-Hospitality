@@ -1,0 +1,33 @@
+{% extends 'hotels/base.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block start %}
+{% if mess %}
+<div class = "mess" style="margin-top: 50px;">
+  <h3 style="color: #E83A59; text-align: center; font-weight: 900;font-family: 'Poppins',sans-serif;">
+      {{ mess.title }}
+  </h3>
+  <h3 style="text-align: center; font-weight: 700;font-family: 'Poppins',sans-serif;">
+    Your Booking {{mess.ordername}} is successfully Updated.
+</h3>
+</div>
+{% endif %}
+<div class="book-form">
+  
+<form action="{% url 'updateitem' id %}" method="POST">
+  {% csrf_token %}
+  <br/>
+  <br/>
+  <br/>
+  <div class="form-group">
+    {% for field in form %}
+      {{field.errors}}
+      {{field.label_tag}}
+      {% render_field field class="form-control" %}
+    {% endfor %}
+    <input type="submit" class="button" value="Update"/>
+ </div>
+</form>
+</div>
+
+{% endblock start %}
