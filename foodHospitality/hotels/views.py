@@ -8,10 +8,10 @@ from django.contrib.auth.models import User
 
 def AllHotels(request):
     query = request.GET.get('search')
-    print(query)
+   
     if(query):
         hotels = Hotel.objects.filter(name__contains=query)
-        print(hotels)
+        
         return render(request,'hotels/viewhotels.html',{
         'hotels' : hotels
     })
@@ -30,13 +30,12 @@ def FetchHotel(request,id):
 def BookRoom(request,id):
     user_id = request.user.id
     user = get_object_or_404(User,pk=user_id)
-    print(user)
+   
     hotel = get_object_or_404(Hotel,pk=id)
-    print(hotel)
+    
 
     if request.method == 'POST':
         filled_form = BookingForm(request.POST)
-        print(filled_form)
         if filled_form.is_valid():
             
             quantity = filled_form.cleaned_data['quantity']
@@ -79,8 +78,10 @@ def BookRoom(request,id):
     return HttpResponse('<p>Booking Room</p>')
 
 def YourBookings(request):
+    # Fetching user
     user_id = request.user.id
     user = get_object_or_404(User,pk=user_id)
+
     bookings = Booking.objects.filter(user=user).values(
         'quantity',
         'booked_from',
@@ -90,8 +91,17 @@ def YourBookings(request):
         'hotel__image',
         'id',
     )
+
+    # Function to calculate the total_price : 
+    def calc_totalPrice(bookings):
+        total_price = 0
+        for i in range(len(bookings)):
+            total_price  = total_price + bookings[i]['quantity'] * bookings[i]['hotel__price']
+        return total_price
+
     return render(request,'hotels/allbookings.html',{
-        'bookings' : bookings
+        'bookings' : bookings,
+        'total_price' : calc_totalPrice(bookings)
     })
 
 def UpdateBooking(request,id):
@@ -107,7 +117,6 @@ def UpdateBooking(request,id):
     # Post Method
     if request.method == "POST":
         filled_form = BookingForm(request.POST)
-        print(filled_form)
         if filled_form.is_valid():
             
             quantity = filled_form.cleaned_data['quantity']
@@ -139,7 +148,6 @@ def UpdateBooking(request,id):
         form.fields['quantity'].initial = booking_details.quantity
         form.fields['booked_to'].initial = booking_details.booked_to
 
-    print(booking_details)
     return render(request,'hotels/booking_update.html',{
         'form' : form,
         "id":id
@@ -148,13 +156,6 @@ def UpdateBooking(request,id):
 
 def DeleteBooking(request,id):
     status = Booking.objects.filter(pk=id).delete()
-    print(status)
     return redirect('your')
     
-
-def BookStatus(request,id):
-    return HttpResponse('<p> Booking Status </p>')
-
-
-
 
