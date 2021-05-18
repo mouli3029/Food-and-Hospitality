@@ -67,7 +67,8 @@ def YourBookings(request):
         'booked_from',
         'booked_to',
         'hotel__name', # Similar to booking.hotel.value
-        'hotel__price'
+        'hotel__price',
+        'hotel__image',
     )
     return render(request,'hotels/allbookings.html',{
         'bookings' : bookings
