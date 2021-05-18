@@ -7,6 +7,15 @@ from django.contrib.auth.models import User
 
 
 def AllHotels(request):
+    query = request.GET.get('search')
+    print(query)
+    if(query):
+        hotels = Hotel.objects.filter(name__contains=query)
+        print(hotels)
+        return render(request,'hotels/viewhotels.html',{
+        'hotels' : hotels
+    })
+
     hotels = Hotel.objects.all()
     return render(request,'hotels/viewhotels.html',{
         'hotels' : hotels
