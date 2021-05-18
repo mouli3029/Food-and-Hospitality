@@ -3,6 +3,15 @@
 {% load crispy_forms_tags %}
 {% block start %}
 <h3 style="color: #E83A59;font-family: 'Poppins',sans-serif;text-align: center;margin-top: 40px;text-decoration: underline;">Your Orders</h3>
+<div style="display:block;text-align: end; padding: 0px 20px;" class="price">
+  <h4>Total Price : ₹ {{total_price}} </h4>
+  <button class="button">
+    <a href="#">
+      Proceed 
+    </a>
+  </button>
+</div>
+
 <div id="all" class="card-container">
     {% for order in orders.all %}
       <div class="card" style="width: 80% !important; display: flex;margin: 50px;">
@@ -25,10 +34,10 @@
                                 padding: 5px 10px;
                                 border-radius: 5px;
                                 border: none;">
-                      <a href="#" style="text-decoration: none; color: white;">Update</a>
+                      <a href="{% url 'updateorder' order.id %}" style="text-decoration: none; color: white;">Update</a>
                   </button>
                   <button class="button">
-                      <a href="#">
+                      <a href="{% url 'deleteorder' order.id %}">
                         Delete
                       </a>
                     </button>

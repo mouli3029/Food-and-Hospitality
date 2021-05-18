@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Category,Food,Cart
 from django.contrib.auth.models import User
@@ -14,9 +14,11 @@ def Menu(request):
 
 def FoodView(request,cid):
     food = []
+    category = get_object_or_404(Category,pk=cid)
+    
     query = request.GET.get('search')
     if(query):
-        food = Food.objects.filter(name__contains=query)
+        food = Food.objects.filter(name__contains=query,category=category)
         print(query)
         print(food)
         return render(request,'food/food.html',{
@@ -92,6 +94,14 @@ def FoodOrder(request,cid,fid):
 def AllOrders(request):
     user_id = request.user.id
     user = get_object_or_404(User,pk=user_id)
+
+    # Function to calculate the total_price : 
+    def calc_totalPrice(orders):
+        total_price = 0
+        for i in range(len(orders)):
+            total_price  = total_price + orders[i]['quantity'] * orders[i]['food__price']
+        return total_price
+
     orders = Cart.objects.filter(user=user).values(
         'quantity',
         'ordered_on',
@@ -99,12 +109,68 @@ def AllOrders(request):
         'food__price',
         'food__category__cname',
         'food__image',
-        'address'
+        'address',
+        'id'
     )
     return render(request,'food/cart.html',{
-        'orders':orders
+        'orders':orders,
+        'total_price':calc_totalPrice(orders)
     })
 
-def search_food(request):
-    pass
- # Food.objects.filter(name__contains="")
+
+def UpdateOrder(request,id):
+    order_details = get_object_or_404(Cart,pk=id)
+    food_id = order_details.food.id
+    user_id = order_details.user.id
+
+    # Getting user and hotel based on booking
+    food = get_object_or_404(Food,pk=food_id)
+    user  = get_object_or_404(User,pk=user_id)
+
+    
+    # Post Method
+    if request.method == "POST":
+        filled_form = OrderForm(request.POST)
+        if filled_form.is_valid():
+            
+           quantity = filled_form.cleaned_data['quantity']
+           ordered_on = filled_form.cleaned_data['ordered_on']
+           address = filled_form.cleaned_data['address']
+           cart =  Cart(id=id,user=user,food=food,address=address,
+                       quantity=quantity,ordered_on=ordered_on)
+           cart.save()
+           mess = {
+               "title" : "Your has been updated successfully.Futher queries contact tasterideadmi6@gmail.com",
+               "ordered_on":ordered_on,
+               "ordername" : food.name,
+           }
+        else :
+            mess = {
+                "title" : "Something went wrong.We are working on it. Please try after few minutes !" ,
+                "ordername": ""
+                }
+        return render(request,'food/order_update.html',{
+         'id' :id,
+         "mess":mess
+    })
+    
+    else :
+        form = OrderForm()
+        form.fields['email'].initial = user.email
+        form.fields['username'].initial = user.username
+        form.fields['name'].initial = food.name 
+        form.fields['quantity'].initial = order_details.quantity
+        form.fields['ordered_on'].initial = order_details.ordered_on
+        form.fields['address'].initial = order_details.address,
+        form.fields['category'].initial = food.category.cname
+
+    return render(request,'food/order_update.html',{
+        'form' : form,
+        "id":id
+    })
+
+def DeleteOrder(request,id):
+    status = Cart.objects.filter(pk=id).delete()
+    return redirect('cart')
+    
+
