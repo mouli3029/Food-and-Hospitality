@@ -13,11 +13,18 @@ def Menu(request):
     })
 
 def FoodView(request,cid):
-    print(cid)
+    food = []
+    query = request.GET.get('search')
+    if(query):
+        food = Food.objects.filter(name__contains=query)
+        print(query)
+        print(food)
+        return render(request,'food/food.html',{
+        'food' : food
+    })
+
     category = get_object_or_404(Category,pk=cid)
     food = Food.objects.filter(category=category)
-    print(food)
-
     return render(request,'food/food.html',{
         'food' : food
     })
@@ -97,3 +104,7 @@ def AllOrders(request):
     return render(request,'food/cart.html',{
         'orders':orders
     })
+
+def search_food(request):
+    pass
+ # Food.objects.filter(name__contains="")
